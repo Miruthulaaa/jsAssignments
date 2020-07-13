@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <!-- Miruthula - LetsUpgrade JS Assignment 1 - 13/07/2020 -->
-<head>
-    <title>13/07/2020 Js Assignment 1</title>
-</head>
-<body>
-    <button onclick="displayDate();">Click to display date and time</button>
-    <script type="text/javascript">
-        function displayDate() {
-            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-            var today = new Date();
-            var hour = today.getHours();
-            var minutes = today.getMinutes();
-            var seconds = today.getSeconds();
-            var meridiem = 'AM';
-            if (hour >= 12) {
-                hour = hour - 12;
-                meridiem = 'PM';
+<html>
+    <head>
+        <title>13/07/2020 Js Assignment 1</title>
+    </head>
+    <body>
+        <button onclick="displayDate();">Click to display date and time</button>
+        <script type="text/javascript">
+            function displayDate() {
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+                var today = new Date();
+                var hour = today.getHours();
+                var minutes = today.getMinutes();
+                var seconds = today.getSeconds();
+                var meridiem = 'AM';
+                if (hour >= 12) {
+                    hour = hour - 12;
+                    meridiem = 'PM';
+                }
+                if (hour == 0)
+                    hour = (meridiem == 'AM') ? 12 : hour;
+                document.write("Today is : " + days[today.getDay()] + "</br> Current Time is : " + hour + " " + meridiem + " : " + minutes + " : " + seconds);
             }
-            if (hour == 0)
-                hour = (meridiem == 'AM') ? 12 : hour;
-            document.write("Today is : " + days[today.getDay()] + "</br> Current Time is : " + hour + " " + meridiem + " : " + minutes + " : " + seconds);
-        }
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
