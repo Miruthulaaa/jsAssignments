@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exploring Console function</title>
+    </head>
+    <body>
+        <h5>Console methods</h5>
+        <script type="text/javascript">
+            /* In js, console is an object which provides access to browser-debugging console.
+            Web console is used to log information associated with web page. */
+
+            // 1. assert() -- The console.assert() method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
+            const errorMsg = 'the # is not even';
+                for (let number = 2; number <= 5; number += 1) {
+                    console.log('the # is ' + number);
+                    // console.assert(number % 2 === 0, { number: number, errorMsg: errorMsg }); 
+                    // or
+                    console.assert(number % 2 === 0, {number, errorMsg});
+                }
+            // output:
+            // the # is 2
+            // the # is 3
+            // Assertion failed: {number: 3, errorMsg: "the # is not even"}
+            // the # is 4
+            // the # is 5
+            // Assertion failed: {number: 5, errorMsg: "the # is not even"}
+            
+            // 2. log() -- used to print the output to console
+            console.log("log statement"); //oytput: log statement
+
+            // 3. error() -- used to print the error format in console
+            console.error("error statement");
+
+            // 4. warn() -- log warning message to console highlighted in yellow
+            console.warn("warning message");
+
+            // 5. clear() -- console will be cleared
+            console.clear(); //will be prevented if you're turning on 'Preserve log' in settings tab in the inspect window
+
+            // 6. time() and timeEnd() -- to find amount of time taken to execute some block of code. both takes same label
+            console.time('find time');
+            console.log('time taking... (here, "find time" is the label)')
+            console.timeLog('find time'); //logs timer so far
+            console.timeEnd('find time'); //ends timer
+            console.timeLog();// Logs the current value of a timer that was previously started by calling console.time() to the console.
+            console.timeLog('find time');
+            // 7. table() --creates table in console -- input must be array or objects
+            console.table([{a: 'column1', b: 'column2'}, {a: 'column1row2', b: 'column2row2'}]); //Array of objects
+            console.table({a: 'array1', b: 'array1'}) //object
+            
+            // 8. count() -- count number of times the function hits
+            let i = 0;
+            let v = 'instance';
+            while(i < 3) {
+                console.count(); //default counting 
+                console.count(v); //counts number of time v hits -- last count : 'instance':3
+                i++;
+            }
+            // 9. countReset() -- resets the count to default for the label -- default will be 0
+            console.countReset(v);
+            console.count(v); //output -- 'instance' : 1 after reseting
+
+            // 10. group() and groupEnd() --> allows to group a block of code
+            console.group('same label');
+            console.log("code to group 1", "code to group 2");
+            // code block
+            console.groupEnd('same label');
+            console.groupCollapsed('label name -- groups code with expandable - groupCollapsed')
+            //code to group without/with label
+            console.warn('code to group without/with label');
+            console.groupEnd() //genric end
+            
+            // 11. custom console logs
+                const spacing = '5px';
+                const styles =`padding: ${spacing}; background-color: white; color: green; font-style:  
+                italic; border: 1px solid black; font-size: 0.9em;`;
+                console.log('%ccustom console used to add styles in concole and syntax is having "$c"', styles); 
+           
+            // 12. debug()
+            // console.log - Black color text with no icon
+
+            // console.info  - Blue color text with icon / same as log/debug
+
+            // console.debug -  Pure black color text
+
+            // console.warn -  Yellow color text with icon
+
+            // console.error -  Red Color text with icon
+
+            // 13. dir() -- The Console method dir() displays an interactive list of the properties of the specified JavaScript object. The output is presented as a hierarchical listing with disclosure triangles that let you see the contents of child objects.
+            let object = {'gfd':'jhgfdf', 'jhdf':'hfdf'};
+            console.dir(object);
+            console.dirxml(object); //Displays an interactive tree of the descendant elements of the specified XML/HTML element
+
+            // 14. trace() - stack trace
+            function trace1() {
+                console.trace() //trace1
+                trace2();
+            }
+            function trace2() {
+                console.trace(); //trace2, trace1
+            } trace1();
+         </script>
+    </body>
+</html>

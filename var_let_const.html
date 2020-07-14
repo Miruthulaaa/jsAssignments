@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>difference b/w var, let, const</title>
+</head>
+
+<body>
+    <h5>difference between var, let, const</h5>
+    <div>
+        <h3>Var</h3>
+        <p>The scope is global when a var variable is declared outside a function. This means that any variable that is
+            declared with var outside a function block is available for use in the whole window.
+            <br>var is function scoped when it is declared within a function. This means that it is available and can be
+            accessed only within that function.
+            <br>i.e., function scoped
+            <br>var can be re-declared within scope and updated
+            <br>can be declared wihtout initilisation
+        </p>
+        <hr>
+        <h3>Let</h3>
+        <p>let is block scoped<br>
+            let cannot be re-declared within same scope of block but can be updated<br>
+            <br> but can be re-declared outside the scope<br>can be declared wihtout initilisation
+        </p>
+        <hr>
+        <h3>Const</h3>
+        <p>const are block scoped<br>
+            const cannot be re-declared or updated within scope<br>
+            const object variable cannot be updated but the properties of that object can be updated<br>must be
+            initialised while declared </p>
+    </div>
+    <script type="text/javascript">
+        var global = 'globalDeclaration';
+        varExample();
+        function varExample() {
+            var fnScope = 'functionScope';
+            var undefined_var;
+            console.log(global); //prints global variable
+            console.log(fnScope); //prints 'funcionScope'
+            console.log(undefined_var) //outputs as 'undefined'
+            fnScope = 'change';
+            console.log(fnScope); //outputs 'change'
+        }
+        var global = 'changeGlobl'; //re-declared
+        console.log(global)
+        // console.log(fnScope)  //throws error
+        // let global = 'globalDeclaration'; //trows error as global is already declared as var within same scope
+        let global2 = 'ee';
+        letExample();
+        function letExample() {
+            let fnScope = 'functionScope'; //differnet scope so ,no error on re-declaration
+            let undefined_var2;
+            console.log(global2); //prints global variable
+            console.log(fnScope); //prints 'funcionScope'
+            console.log(undefined_var2) //outputs as 'undefined'
+            fnScope = 'change';
+            console.log(fnScope); //outputs 'change'
+            // let fnScope = 'changeE'; //error - cannot be re-declared within same scope
+        }
+        let fnScope = 'changeGlobl'; //re-declared -different scope
+        console.log(fnScope);
+        // console.log(undefined_var2)  //throws error
+        const global3 = { 'object': 'hello' };
+        console.log(global3);
+        // const global3 = {'object': 'cjange'}; //error
+        global3.object = 'change';
+        console.log(global3);
+        // const declare; //error
+        console.log(typeof global3) //object
+        console.log(global3 instanceof Object) //true
+        console.log(global3 instanceof String) //false
+    </script>
+</body>
+
+</html>
